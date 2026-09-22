@@ -2726,6 +2726,14 @@ body[data-page="home"] {
   transition: transform 700ms var(--ease-apple), filter 500ms ease;
 }
 
+.project-index-card-chahui-exhibition .project-index-media img {
+  object-fit: cover;
+}
+
+.project-index-card-lrek-atid .project-index-media {
+  background: #f3f1eb;
+}
+
 .project-index-media span {
   position: absolute;
   top: 16px;

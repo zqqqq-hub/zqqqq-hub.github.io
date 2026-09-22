@@ -113,7 +113,6 @@
       ["douyin", "抖音"],
       ["blender", "Blender（基础使用）"],
       ["obsidian", "Obsidian"],
-      ["eagle", "Eagle 素材管理"],
     ];
     const icons = tools.map(([slug, label], index) => {
       const isXiaohongshu = slug === "xiaohongshu";
@@ -170,7 +169,7 @@
       <section class="resume-tail reveal-block" id="about" aria-labelledby="about-title">
         <div class="resume-tail-heading">
           <p class="section-kicker">About / Resume</p>
-          <h2 id="about-title"><span>关于我，</span><span>也关于下一次</span><span>合作。</span></h2>
+          <h2 id="about-title"><span>关于我</span></h2>
           <p>${data.profile.aboutText}</p>
         </div>
         <div class="resume-tail-detail" id="resume">
@@ -208,7 +207,7 @@
     const cards = works
       .map(
         (work, index) => `
-          <article class="project-index-card reveal" data-motion-reveal>
+          <article class="project-index-card project-index-card-${html.attrs(work.slug)} reveal" data-motion-reveal>
             <a href="${workUrl(work)}" aria-label="查看 ${html.attrs(work.title)} 项目详情">
               <div class="project-index-media">
                 <img
@@ -239,7 +238,7 @@
             <p class="section-kicker">Selected Casework / 01—${String(works.length).padStart(2, "0")}</p>
             <h2 id="works-title">项目案例</h2>
           </div>
-          <p>按商业场景组织，而不是按视觉风格分类。点击项目查看完整案例。</p>
+          <p>这里展示我参与的品牌、零售与产品视觉项目。点击项目，查看完整案例与设计过程。</p>
         </div>
         <div class="project-index-grid">
           ${cards}

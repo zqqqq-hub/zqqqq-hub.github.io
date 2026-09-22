@@ -48,7 +48,6 @@ a.floating-tool:focus-visible {
 .floating-tool-douyin { bottom: 3%; left: 50%; }
 .floating-tool-blender { top: 5%; right: 20%; }
 .floating-tool-obsidian { top: 32%; right: 17%; }
-.floating-tool-eagle { bottom: 28%; left: 17%; }
 
 .floating-tool-card {
   display: grid;
@@ -186,7 +185,6 @@ a.floating-tool:focus-visible {
   .floating-tool-douyin { bottom: 0%; left: 43%; }
   .floating-tool-blender { top: 3%; right: 4%; }
   .floating-tool-obsidian { top: 38%; right: 2%; }
-  .floating-tool-eagle { bottom: 31%; left: 16%; }
   .floating-hero-kicker { margin-bottom: 18px; font-size: 9px; letter-spacing: .15em; }
   .floating-hero h1 { display: block; font-size: clamp(29px, 8vw, 42px); line-height: 1.4; letter-spacing: -.045em; }
   .floating-hero h1 > span { display: block; }
