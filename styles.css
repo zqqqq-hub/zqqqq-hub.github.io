@@ -2713,16 +2713,16 @@ body[data-page="home"] {
 
 .project-index-media {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
-  background: #dedbd2;
+  background: #ecebe6;
 }
 
 .project-index-media img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transform: scale(1.001);
+  object-fit: contain;
+  transform: none;
   transition: transform 700ms var(--ease-apple), filter 500ms ease;
 }
 
@@ -2786,7 +2786,7 @@ body[data-page="home"] {
 
 .project-index-card a:hover .project-index-media img {
   filter: saturate(1.06) contrast(1.02);
-  transform: scale(1.025);
+  transform: none;
 }
 
 .project-index-card a:hover .project-index-copy {
@@ -3142,7 +3142,7 @@ a.personal-practice-link:hover {
   }
 
   .project-index-media {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 9;
   }
 
   .project-index-copy {

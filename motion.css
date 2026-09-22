@@ -86,16 +86,6 @@ html.motion-enabled:not(.motion-reduced) .is-motion-visible [data-motion-index]:
   transform: translate3d(0, 0, 0);
 }
 
-@media (min-width: 769px) and (prefers-reduced-motion: no-preference) {
-  html.motion-enabled .project-index-media img[data-motion-parallax] {
-    transform: translate3d(0, var(--motion-parallax-y, 0px), 0) scale(1.035);
-  }
-
-  html.motion-enabled .project-index-card a:hover .project-index-media img[data-motion-parallax] {
-    transform: translate3d(0, var(--motion-parallax-y, 0px), 0) scale(1.06);
-  }
-}
-
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
   .project-index-card {
     perspective: 1000px;
@@ -129,10 +119,6 @@ html.motion-enabled:not(.motion-reduced) .is-motion-visible [data-motion-index]:
   .project-index-card .is-tilting .project-index-role {
     transform: translateZ(10px);
   }
-
-  html.motion-enabled .project-index-card a:hover .project-index-media img[data-motion-parallax] {
-    transform: translate3d(0, var(--motion-parallax-y, 0px), 0) scale(1.035);
-  }
 }
 
 @media (hover: none) and (prefers-reduced-motion: no-preference),
@@ -158,7 +144,7 @@ html.motion-enabled:not(.motion-reduced) .is-motion-visible [data-motion-index]:
 
   .project-index-card.is-touch-focused .project-index-media img {
     filter: saturate(1.04) contrast(1.015);
-    transform: scale(1.025);
+    transform: none;
   }
 
   .project-index-card > a:active {

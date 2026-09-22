@@ -215,7 +215,6 @@
                   src="${asset(work.cover)}"
                   alt="${html.attrs(work.title)} 项目封面"
                   loading="${index === 0 ? "eager" : "lazy"}"
-                  data-motion-parallax
                   ${fallbackAttr(work.coverFallback)}
                 >
               </div>

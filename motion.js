@@ -7,7 +7,6 @@
   };
   const pageType = document.body.dataset.page || "home";
   const state = { value: "idle" };
-  let parallaxFrame;
 
   const storage = {
     get(key) {
@@ -109,28 +108,6 @@
     );
 
     items.filter((item) => !heroItems.includes(item)).forEach((item) => observer.observe(item));
-  }
-
-  function updateParallax() {
-    parallaxFrame = undefined;
-    document.querySelectorAll("[data-motion-parallax]").forEach((item) => {
-      const media = item.closest(".project-index-media");
-      if (!media) return;
-      const rect = media.getBoundingClientRect();
-      if (rect.bottom < 0 || rect.top > window.innerHeight) return;
-      const progress = (rect.top + rect.height / 2 - window.innerHeight / 2) / window.innerHeight;
-      item.style.setProperty("--motion-parallax-y", `${Math.round(progress * -12)}px`);
-    });
-  }
-
-  function installParallax() {
-    if (isReduced() || window.matchMedia("(max-width: 768px)").matches) return;
-    const requestUpdate = () => {
-      if (!parallaxFrame) parallaxFrame = requestAnimationFrame(updateParallax);
-    };
-    window.addEventListener("scroll", requestUpdate, { passive: true });
-    window.addEventListener("resize", requestUpdate, { passive: true });
-    requestUpdate();
   }
 
   function installCardTilt() {
@@ -255,7 +232,6 @@
     revealPage();
     restoreHomeScroll();
     installTouchCardFocus();
-    installParallax();
     installCardTilt();
     installPageTransitions();
     reducedMotion.addEventListener?.("change", handleReducedMotionChange);
