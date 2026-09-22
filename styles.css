@@ -343,6 +343,113 @@ h3 {
   color: var(--accent-2);
 }
 
+.arrow-fill-button {
+  --arrow-button-bg: #454543;
+  --arrow-button-fill: #e5e5e2;
+  --arrow-button-text: #fff;
+  --arrow-button-fill-text: #222321;
+  --arrow-button-icon-size: 46px;
+  --arrow-button-inset: 6px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: fit-content;
+  max-width: 100%;
+  min-height: 58px;
+  overflow: hidden;
+  padding: 0 74px 0 27px;
+  border: 1px solid var(--arrow-button-bg);
+  border-radius: 999px;
+  background: var(--arrow-button-bg);
+  color: var(--arrow-button-text);
+  font-size: 14px;
+  font-weight: 750;
+  line-height: 1;
+  white-space: nowrap;
+  isolation: isolate;
+  transition: color 220ms ease 90ms, border-color 220ms ease;
+}
+
+.arrow-fill-button::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: var(--arrow-button-inset);
+  right: var(--arrow-button-inset);
+  bottom: var(--arrow-button-inset);
+  width: var(--arrow-button-icon-size);
+  border-radius: 999px;
+  background: var(--arrow-button-fill);
+  transition:
+    top 450ms cubic-bezier(.785, .135, .15, .86),
+    right 450ms cubic-bezier(.785, .135, .15, .86),
+    bottom 450ms cubic-bezier(.785, .135, .15, .86),
+    width 450ms cubic-bezier(.785, .135, .15, .86);
+}
+
+.arrow-fill-button-label {
+  position: relative;
+  z-index: 1;
+}
+
+.arrow-fill-button-icon {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  right: var(--arrow-button-inset);
+  display: grid;
+  width: var(--arrow-button-icon-size);
+  height: var(--arrow-button-icon-size);
+  place-items: center;
+  overflow: hidden;
+  color: var(--arrow-button-fill-text);
+  transform: translateY(-50%);
+}
+
+.arrow-fill-button-arrow {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+  transition: transform 450ms cubic-bezier(.785, .135, .15, .86), opacity 300ms ease;
+}
+
+.arrow-fill-button-arrow-enter {
+  opacity: 0;
+  transform: translateX(-30px) scale(.4);
+}
+
+.arrow-fill-button:is(:hover, :active)::before {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.arrow-fill-button:is(:hover, :active) {
+  color: var(--arrow-button-fill-text);
+}
+
+.arrow-fill-button:is(:hover, :active) .arrow-fill-button-arrow-enter {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+.arrow-fill-button:is(:hover, :active) .arrow-fill-button-arrow-leave {
+  opacity: 0;
+  transform: translateX(30px) scale(.4);
+}
+
+.arrow-fill-button:focus-visible {
+  outline: 3px solid rgb(69 69 67 / 28%);
+  outline-offset: 4px;
+}
+
 .hero-gallery {
   position: relative;
   display: grid;
@@ -2865,15 +2972,7 @@ body[data-page="home"] {
 }
 
 .personal-practice-link {
-  color: var(--ink);
-  font-size: 13px;
-  font-weight: 800;
-  transition: color 180ms ease, transform 180ms ease;
-}
-
-a.personal-practice-link:hover {
-  color: var(--accent);
-  transform: translateX(3px);
+  flex: 0 0 auto;
 }
 
 .personal-practice-link.is-pending {
@@ -3381,35 +3480,8 @@ a.personal-practice-link:hover {
 }
 
 .resume-tail-document {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 6px 20px;
-  align-items: center;
   width: 100%;
-  max-width: 100%;
-  min-width: 0;
-  min-height: 112px;
-  padding: 22px 24px;
-  background: var(--ink);
-  color: #fff;
-  transition: background-color 180ms ease, transform 180ms ease;
-}
-
-.resume-tail-document > span:first-child {
-  grid-column: 1 / -1;
-  color: rgba(255, 255, 255, 0.58);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-}
-
-.resume-tail-document strong {
-  font-size: 18px;
-}
-
-.resume-tail-document:hover {
-  background: var(--accent);
-  transform: translateY(-3px);
+  justify-content: flex-start;
 }
 
 @media (max-width: 900px) {
@@ -3485,12 +3557,13 @@ a.personal-practice-link:hover {
 
   .resume-tail-document {
     grid-column: auto;
-    min-height: 104px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .resume-tail-document {
+  .arrow-fill-button,
+  .arrow-fill-button::before,
+  .arrow-fill-button-arrow {
     transition: none;
   }
 }

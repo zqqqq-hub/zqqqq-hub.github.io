@@ -71,6 +71,20 @@
     return path ? ` data-fallback-src="${html.attrs(asset(path))}"` : "";
   }
 
+  function renderArrowFillButton({ text, href, className = "", target = "", rel = "", attrs = "" }) {
+    const targetAttr = target ? ` target="${html.attrs(target)}"` : "";
+    const relAttr = rel ? ` rel="${html.attrs(rel)}"` : "";
+    return `
+      <a class="arrow-fill-button ${html.attrs(className)}" href="${html.attrs(href)}"${targetAttr}${relAttr}${attrs ? ` ${attrs}` : ""}>
+        <span class="arrow-fill-button-label">${html.escape(text)}</span>
+        <span class="arrow-fill-button-icon" aria-hidden="true">
+          <svg class="arrow-fill-button-arrow arrow-fill-button-arrow-enter" viewBox="0 0 24 24" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          <svg class="arrow-fill-button-arrow arrow-fill-button-arrow-leave" viewBox="0 0 24 24" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </a>
+    `;
+  }
+
   function renderDetailNavigation(work) {
     const works = orderedWorks();
     const currentIndex = works.findIndex((item) => item.slug === work.slug);
@@ -141,7 +155,7 @@
           <p class="floating-hero-kicker" data-motion-reveal>ZHANG QIAN / VISUAL DESIGNER</p>
           <h1 id="hero-title" data-motion-reveal><span>${data.profile.name}</span><span class="floating-hero-divider" aria-hidden="true">·</span><span>商业视觉设计师</span></h1>
           <p class="floating-hero-intro" data-motion-reveal>围绕品牌、零售与产品内容，<br>用设计与 AI，把想法变成看得见的作品。</p>
-          <a class="floating-hero-cta" href="#works" data-motion-reveal>浏览作品 <span aria-hidden="true">↗</span></a>
+          ${renderArrowFillButton({ text: "浏览作品", href: "#works", className: "floating-hero-cta", attrs: "data-motion-reveal" })}
         </div>
         <p class="floating-hero-footnote">HANGZHOU, CHINA <span aria-hidden="true">/</span> PORTFOLIO 2026</p>
       </section>
@@ -191,11 +205,14 @@
                 )
                 .join("")}
             </div>
-            <a class="resume-tail-document" href="${asset(data.documents.resume)}" target="_blank" rel="noreferrer">
-              <span>PDF / 3 PAGES</span>
-              <strong>查看完整简历</strong>
-              <span aria-hidden="true">↗</span>
-            </a>
+            ${renderArrowFillButton({
+              text: "查看完整简历",
+              href: asset(data.documents.resume),
+              className: "resume-tail-document",
+              target: "_blank",
+              rel: "noreferrer",
+              attrs: 'aria-label="查看完整简历 PDF，共 3 页"',
+            })}
           </div>
         </div>
       </section>
@@ -260,7 +277,7 @@
       )
       .join("");
     const action = practice.href
-      ? `<a class="personal-practice-link" href="${html.attrs(practice.href)}" target="_blank" rel="noreferrer">查看小红书创作 <span aria-hidden="true">↗</span></a>`
+      ? renderArrowFillButton({ text: "查看小红书创作", href: practice.href, className: "personal-practice-link", target: "_blank", rel: "noreferrer" })
       : `<span class="personal-practice-link is-pending" aria-disabled="true">查看小红书创作 <span aria-hidden="true">↗</span></span>`;
 
     return `

@@ -117,23 +117,9 @@ a.floating-tool:focus-visible {
 }
 
 .floating-hero-cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-  min-height: 52px;
   margin-top: 34px;
-  padding: 0 32px;
-  border-radius: 8px;
-  background: #202020;
-  color: #fff;
-  font-size: 15px;
-  font-weight: 600;
   pointer-events: auto;
 }
-
-.floating-hero-cta:hover { background: #3b3b3b; }
-.floating-hero-cta:focus-visible { outline: 3px solid #777; outline-offset: 5px; }
 
 .floating-hero-footnote {
   position: absolute;
@@ -191,7 +177,7 @@ a.floating-tool:focus-visible {
   .floating-hero h1 > span:first-child { margin-bottom: 2px; font-size: 46px; }
   .floating-hero h1 > .floating-hero-divider { display: none; }
   .floating-hero-intro { margin-top: 17px; font-size: 13px; line-height: 1.9; letter-spacing: 0; }
-  .floating-hero-cta { min-height: 48px; margin-top: 26px; font-size: 14px; }
+  .floating-hero-cta { margin-top: 26px; }
   .floating-hero-footnote { font-size: 8px; letter-spacing: .1em; }
 }
 
