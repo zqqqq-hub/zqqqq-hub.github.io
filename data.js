@@ -68,6 +68,7 @@ const siteData = {
     summary:
       "拥有 3 年品牌与商业视觉设计经验，覆盖品牌视觉、线下广告位、门店 POP、开业整合物料、电商视觉、活动视觉与 AI 辅助工作流。能够根据商场广告位、用户动线、观看距离和信息层级，完成从主视觉设计、物料延展到落地执行的完整视觉交付。",
     education: "湖北美术学院",
+    educationDetail: "产品设计本科 · 2019–2023",
     contactFacts: [
       { label: "Email", value: "1499276232@qq.com", href: "mailto:1499276232@qq.com" },
       { label: "Tel", value: "15922497558", href: "tel:15922497558" },

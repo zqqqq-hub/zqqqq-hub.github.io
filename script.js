@@ -154,31 +154,49 @@
       .slice(0, 2)
       .map(
         (item) => `
-          <article class="profile-experience-item">
-            <span>${item.period || ""}</span>
-            <div>
+          <article class="resume-tail-experience-item">
+            <span class="resume-tail-period">${item.period || ""}</span>
+            <div class="resume-tail-role">
               <strong>${item.company}</strong>
-              <p>${item.role}</p>
+              <span>${item.role}</span>
             </div>
+            <p>${item.description || ""}</p>
           </article>
         `,
       )
       .join("");
 
     return `
-      <section class="compact-profile reveal-block" id="about" aria-labelledby="about-title">
-        <div class="compact-profile-heading">
+      <section class="resume-tail reveal-block" id="about" aria-labelledby="about-title">
+        <div class="resume-tail-heading">
           <p class="section-kicker">About / Resume</p>
-          <h2 id="about-title">用清晰的视觉系统，解决真实商业场景中的表达问题。</h2>
+          <h2 id="about-title"><span>关于我，</span><span>也关于下一次</span><span>合作。</span></h2>
           <p>${data.profile.aboutText}</p>
         </div>
-        <div class="compact-profile-detail" id="resume">
-          <div class="profile-experience-list" aria-label="工作经历摘要">
+        <div class="resume-tail-detail" id="resume">
+          <div class="resume-tail-section-label">Experience</div>
+          <div class="resume-tail-experience-list" aria-label="工作经历摘要">
             ${experience}
           </div>
-          <div class="profile-resume-action">
-            <span>${data.resume.education}</span>
-            <a class="text-link" href="${asset(data.documents.resume)}" target="_blank" rel="noreferrer">打开 PDF 简历 ↗</a>
+          <div class="resume-tail-meta">
+            <div class="resume-tail-education">
+              <span>Education</span>
+              <strong>${data.resume.education}</strong>
+              <p>${data.resume.educationDetail || ""}</p>
+            </div>
+            <div class="resume-tail-contact">
+              <span>Contact</span>
+              ${data.resume.contactFacts
+                .map(
+                  (fact) => `<a href="${fact.href}">${fact.value}</a>`,
+                )
+                .join("")}
+            </div>
+            <a class="resume-tail-document" href="${asset(data.documents.resume)}" target="_blank" rel="noreferrer">
+              <span>PDF / 3 PAGES</span>
+              <strong>查看完整简历</strong>
+              <span aria-hidden="true">↗</span>
+            </a>
           </div>
         </div>
       </section>

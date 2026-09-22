@@ -3237,3 +3237,252 @@ a.personal-practice-link:hover {
     transition: none;
   }
 }
+
+/* Homepage closing resume */
+.resume-tail {
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: clamp(88px, 10vw, 156px) clamp(20px, 4vw, 64px) clamp(54px, 7vw, 96px);
+  border-top: 1px solid var(--ink);
+  overflow-x: clip;
+}
+
+.resume-tail-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+  column-gap: clamp(44px, 9vw, 144px);
+  align-items: end;
+  min-width: 0;
+}
+
+.resume-tail-heading .section-kicker {
+  grid-column: 1 / -1;
+  margin-bottom: 22px;
+}
+
+.resume-tail-heading h2 {
+  min-width: 0;
+  margin: 0;
+  font-family: "Helvetica Neue", "Arial", "PingFang SC", sans-serif;
+  font-size: clamp(54px, 7.8vw, 116px);
+  font-weight: 900;
+  letter-spacing: -0.065em;
+  line-height: 0.9;
+}
+
+.resume-tail-heading h2 span {
+  display: block;
+}
+
+.resume-tail-heading > p:last-child {
+  min-width: 0;
+  max-width: 520px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.resume-tail-detail {
+  min-width: 0;
+  margin-top: clamp(72px, 9vw, 126px);
+}
+
+.resume-tail-section-label,
+.resume-tail-education > span,
+.resume-tail-contact > span {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.resume-tail-section-label {
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(17, 18, 15, 0.32);
+}
+
+.resume-tail-experience-item {
+  display: grid;
+  grid-template-columns: minmax(130px, 0.55fr) minmax(220px, 0.9fr) minmax(280px, 1.55fr);
+  gap: clamp(22px, 4vw, 64px);
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(17, 18, 15, 0.18);
+}
+
+.resume-tail-period,
+.resume-tail-role span,
+.resume-tail-experience-item > p,
+.resume-tail-education p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.resume-tail-role strong,
+.resume-tail-role span {
+  display: block;
+}
+
+.resume-tail-role strong {
+  margin-bottom: 7px;
+  font-size: 15px;
+}
+
+.resume-tail-experience-item > p,
+.resume-tail-education p {
+  margin: 0;
+}
+
+.resume-tail-meta {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(220px, 1fr) minmax(260px, 1.1fr);
+  gap: clamp(24px, 5vw, 76px);
+  align-items: end;
+  min-width: 0;
+  padding-top: clamp(42px, 6vw, 76px);
+}
+
+.resume-tail-education strong {
+  display: block;
+  margin: 15px 0 5px;
+  font-size: 17px;
+}
+
+.resume-tail-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.resume-tail-contact > span {
+  margin-bottom: 13px;
+}
+
+.resume-tail-contact a {
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.resume-tail-contact a:hover {
+  color: var(--accent);
+}
+
+.resume-tail-document {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 6px 20px;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 112px;
+  padding: 22px 24px;
+  background: var(--ink);
+  color: #fff;
+  transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.resume-tail-document > span:first-child {
+  grid-column: 1 / -1;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.resume-tail-document strong {
+  font-size: 18px;
+}
+
+.resume-tail-document:hover {
+  background: var(--accent);
+  transform: translateY(-3px);
+}
+
+@media (max-width: 900px) {
+  .resume-tail-heading {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .resume-tail-heading > p:last-child {
+    max-width: 620px;
+  }
+
+  .resume-tail-experience-item {
+    grid-template-columns: minmax(120px, 0.5fr) minmax(180px, 0.8fr) minmax(240px, 1.2fr);
+    gap: 24px;
+  }
+
+  .resume-tail-meta {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .resume-tail-document {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 740px) {
+  .resume-tail {
+    padding: 84px 18px 48px;
+  }
+
+  .resume-tail-heading h2 {
+    overflow-wrap: anywhere;
+    font-size: clamp(46px, 13.5vw, 60px);
+    word-break: break-all;
+  }
+
+  .resume-tail-heading > p:last-child,
+  .resume-tail-experience-item,
+  .resume-tail-role,
+  .resume-tail-experience-item > p {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .resume-tail-contact a {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .resume-tail-detail {
+    margin-top: 70px;
+  }
+
+  .resume-tail-experience-item,
+  .resume-tail-meta {
+    grid-template-columns: 1fr;
+  }
+
+  .resume-tail-experience-item {
+    gap: 10px;
+    padding: 24px 0 28px;
+  }
+
+  .resume-tail-experience-item > p {
+    margin-top: 8px;
+  }
+
+  .resume-tail-meta {
+    gap: 34px;
+    padding-top: 46px;
+  }
+
+  .resume-tail-document {
+    grid-column: auto;
+    min-height: 104px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .resume-tail-document {
+    transition: none;
+  }
+}
