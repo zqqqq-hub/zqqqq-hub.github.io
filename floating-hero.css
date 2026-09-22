@@ -10,6 +10,7 @@
   isolation: isolate;
   background: #fff;
   color: #242424;
+  touch-action: pan-y;
 }
 
 .floating-hero-tools {
@@ -157,7 +158,8 @@ a.floating-tool:focus-visible {
   75% { transform: translate(-6px, 8px) rotate(-5deg); }
 }
 
-.floating-hero.is-paused .floating-tool-card { animation-play-state: paused; }
+.floating-hero.is-paused .floating-tool-card,
+.floating-hero.is-touching .floating-tool-card { animation-play-state: paused; }
 
 @media (max-width: 1000px) {
   .floating-tool, .floating-tool-card { width: 64px; height: 64px; }
@@ -193,6 +195,12 @@ a.floating-tool:focus-visible {
   .floating-hero-intro { margin-top: 17px; font-size: 13px; line-height: 1.9; letter-spacing: 0; }
   .floating-hero-cta { min-height: 48px; margin-top: 26px; font-size: 14px; }
   .floating-hero-footnote { font-size: 8px; letter-spacing: .1em; }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .floating-hero-cta:active {
+    transform: scale(.97);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

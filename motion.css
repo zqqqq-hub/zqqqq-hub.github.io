@@ -135,6 +135,43 @@ html.motion-enabled:not(.motion-reduced) .is-motion-visible [data-motion-index]:
   }
 }
 
+@media (hover: none) and (prefers-reduced-motion: no-preference),
+  (pointer: coarse) and (prefers-reduced-motion: no-preference) {
+  .project-index-card > a {
+    transform-origin: center center;
+    transition: transform 360ms var(--motion-ease);
+  }
+
+  .project-index-card .project-index-media,
+  .project-index-card .project-index-media img,
+  .project-index-card .project-index-copy {
+    transition: transform 520ms var(--motion-ease), box-shadow 360ms ease, filter 360ms ease, border-color 360ms ease;
+  }
+
+  .project-index-card.is-touch-focused > a {
+    transform: translateY(-4px) scale(1.008);
+  }
+
+  .project-index-card.is-touch-focused .project-index-media {
+    box-shadow: 0 22px 42px -28px rgba(0, 0, 0, .34);
+  }
+
+  .project-index-card.is-touch-focused .project-index-media img {
+    filter: saturate(1.04) contrast(1.015);
+    transform: scale(1.025);
+  }
+
+  .project-index-card > a:active {
+    transform: scale(.985);
+    transition-duration: 90ms;
+  }
+
+  .resume-tail-document:active,
+  a.personal-practice-link:active {
+    transform: scale(.98);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html.motion-pending::before,
   .case-transition-cover {

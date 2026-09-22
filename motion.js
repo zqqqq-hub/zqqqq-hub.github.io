@@ -161,6 +161,26 @@
     });
   }
 
+  function installTouchCardFocus() {
+    if (isReduced() || !("IntersectionObserver" in window)) return;
+    const touchPointer = window.matchMedia("(hover: none), (pointer: coarse)");
+    if (!touchPointer.matches) return;
+
+    const cards = [...document.querySelectorAll(".project-index-card")];
+    if (!cards.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          entry.target.classList.toggle("is-touch-focused", entry.isIntersecting);
+        });
+      },
+      { threshold: 0.08, rootMargin: "-24% 0px -30% 0px" },
+    );
+
+    cards.forEach((card) => observer.observe(card));
+  }
+
   function isHome(url) {
     return /(?:^|\/)index\.html$/.test(url.pathname) || url.pathname === "/";
   }
@@ -234,6 +254,7 @@
     revealFlowItems();
     revealPage();
     restoreHomeScroll();
+    installTouchCardFocus();
     installParallax();
     installCardTilt();
     installPageTransitions();

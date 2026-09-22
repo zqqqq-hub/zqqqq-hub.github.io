@@ -14,6 +14,7 @@
     let frame = 0;
     let lastTime = 0;
     let inView = true;
+    let touchActive = false;
 
     // Same unit-mass spring and repulsion as the reference: k=300, c=20,
     // radius=150px, maximum displacement=50px. The anchor stays untransformed
@@ -56,20 +57,28 @@
     }
 
     function start() {
-      if (frame || reduced.matches || !finePointer.matches || !inView || document.hidden) return;
+      if (frame || reduced.matches || !inView || document.hidden) return;
       lastTime = performance.now();
       frame = requestAnimationFrame(animate);
     }
 
     function release() { pointer = null; start(); }
 
+    function endTouch() {
+      touchActive = false;
+      hero.classList.remove("is-touching");
+      release();
+    }
+
     function syncMotion() {
       const paused = !inView || document.hidden || reduced.matches;
       hero.classList.toggle("is-paused", paused);
-      if (paused || !finePointer.matches) {
+      if (paused) {
         cancelAnimationFrame(frame);
         frame = 0;
         pointer = null;
+        touchActive = false;
+        hero.classList.remove("is-touching");
         icons.forEach((icon) => {
           icon.x = icon.y = icon.vx = icon.vy = 0;
           icon.body.style.transform = "";
@@ -78,14 +87,33 @@
     }
 
     hero.addEventListener("pointermove", (event) => {
-      if (event.pointerType !== "mouse" || reduced.matches || !finePointer.matches) return;
+      if (reduced.matches) return;
+      if (event.pointerType === "touch") {
+        if (!touchActive) return;
+      } else if (event.pointerType !== "mouse" || !finePointer.matches) return;
       pointer = { x: event.clientX, y: event.clientY };
       start();
     }, { passive: true });
-    hero.addEventListener("pointerleave", release);
-    hero.addEventListener("pointercancel", release);
-    window.addEventListener("blur", release);
-    window.addEventListener("scroll", release, { passive: true });
+
+    hero.addEventListener("pointerdown", (event) => {
+      if (event.pointerType !== "touch" || reduced.matches) return;
+      touchActive = true;
+      hero.classList.add("is-touching");
+      pointer = { x: event.clientX, y: event.clientY };
+      start();
+    }, { passive: true });
+
+    hero.addEventListener("pointerup", endTouch);
+    hero.addEventListener("pointerleave", (event) => {
+      if (event.pointerType === "touch") endTouch();
+      else release();
+    });
+    hero.addEventListener("pointercancel", endTouch);
+    window.addEventListener("blur", endTouch);
+    window.addEventListener("scroll", () => {
+      if (touchActive) endTouch();
+      else release();
+    }, { passive: true });
     window.addEventListener("resize", release, { passive: true });
     reduced.addEventListener("change", syncMotion);
     finePointer.addEventListener("change", syncMotion);
