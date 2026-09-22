@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>酥骨鸡排 P0 快速沟通稿</title>
+  <style>
+    :root {
+      --red: #c81919;
+      --red-deep: #8d1010;
+      --yellow: #ffd333;
+      --cream: #fff3d4;
+      --paper: #fff9eb;
+      --ink: #20140f;
+      --muted: #765f4f;
+      --line: rgba(141, 16, 16, 0.18);
+      --shadow: 0 18px 44px rgba(77, 25, 5, 0.16);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: #fff0cf;
+      letter-spacing: 0;
+    }
+
+    .drafts-page {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 34px 24px 56px;
+    }
+
+    .drafts-header {
+      min-height: 260px;
+      border-radius: 8px;
+      padding: 30px;
+      color: white;
+      background: linear-gradient(135deg, var(--red), var(--red-deep));
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .eyebrow {
+      width: fit-content;
+      margin: 0 0 18px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--yellow);
+      color: var(--red-deep);
+      font-weight: 900;
+      font-size: 14px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(42px, 6vw, 86px);
+      line-height: 0.95;
+      letter-spacing: 0;
+    }
+
+    .intro {
+      margin: 16px 0 0;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: clamp(17px, 2vw, 26px);
+      font-weight: 800;
+    }
+
+    .artboards {
+      display: grid;
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .board-card {
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid var(--line);
+      box-shadow: 0 14px 34px rgba(77, 25, 5, 0.1);
+      overflow: hidden;
+    }
+
+    .board-meta {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 20px 22px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .board-meta h2 {
+      margin: 0;
+      font-size: 26px;
+      line-height: 1.15;
+    }
+
+    .board-meta p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 15px;
+    }
+
+    .ratio-note {
+      flex: 0 0 auto;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: #fff0c2;
+      color: var(--red-deep);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .canvas-wrap {
+      padding: 22px;
+      overflow-x: auto;
+    }
+
+    .artboard {
+      position: relative;
+      margin: 0 auto;
+      background: var(--paper);
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(49, 13, 3, 0.16);
+    }
+
+    .red-panel {
+      background: linear-gradient(135deg, var(--red), var(--red-deep));
+      color: white;
+    }
+
+    .yellow-text { color: var(--yellow); }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 0.36em 0.72em;
+      background: var(--yellow);
+      color: var(--red-deep);
+      font-weight: 900;
+    }
+
+    @media (max-width: 760px) {
+      .drafts-page { padding: 18px 12px 32px; }
+      .board-meta { display: block; }
+      .ratio-note { display: inline-flex; margin-top: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="drafts-page">
+    <header class="drafts-header">
+      <p class="eyebrow">路线 B · 快速沟通稿</p>
+      <h1>酥骨鸡排 P0 物料五件套</h1>
+      <p class="intro">门头 / 菜单价目表 / 灯箱四宫格 / 柜台正面贴 / 套餐小立牌</p>
+    </header>
+
+    <section class="artboards" aria-label="P0 五件套画板">
+      <article class="board-card" id="storefront-sign"></article>
+      <article class="board-card" id="menu-board"></article>
+      <article class="board-card" id="lightbox-four-grid"></article>
+      <article class="board-card" id="counter-front-sticker"></article>
+      <article class="board-card" id="combo-table-stand"></article>
+    </section>
+  </main>
+</body>
+</html>
