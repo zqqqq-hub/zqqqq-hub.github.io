@@ -4,6 +4,14 @@
 @media(max-width:560px){.navigation{padding:18px 6vw}.hero{min-height:660px}.hero>img{object-position:55% center}.hero-shade{background:linear-gradient(180deg,rgba(7,8,7,.7),rgba(7,8,7,.15) 45%,rgba(7,8,7,.92))}.hero-copy{padding-top:120px}.hero h1{font-size:29vw}.hero-lead{font-size:14px;letter-spacing:.08em}.hero-meta{bottom:24px;font-size:9px}.section-mark span{font-size:28px}.overview h2,.section-heading h2,.film-heading h2,.role h2{font-size:34px}.identity-copy{min-height:510px}.identity-copy h2{font-size:42px}.touchpoint-grid{grid-template-columns:1fr}.invitation{width:75%;margin:auto}.content-pair{grid-template-columns:1fr 1fr;padding-top:10px;gap:12px}.content-pair figure:last-child{transform:translateY(34px)}.film-frame{padding-left:0;padding-right:0}.film-frame figcaption{padding-left:6vw}.record-grid{grid-template-columns:1fr}.record-grid .record-wide{grid-column:auto}.record-wide img,.record-grid figure:not(.record-wide) img{aspect-ratio:4/3}.record-grid figure:nth-child(4),.record-grid figure:nth-child(5){display:none}.ending{min-height:500px}.ending h2{font-size:48px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.content-pair figure:last-child{transform:none}}
 
+/* 桌面端使用横版活动主视觉；手机端继续保留竖版邀请函构图。 */
+.hero>picture{position:absolute;inset:0;z-index:-2}
+.hero>picture img{width:100%;height:100%;object-fit:contain;object-position:center;background:#caa565}
+@media(min-width:801px){
+  .hero{min-height:0;aspect-ratio:16/9}
+  .hero>picture img{object-fit:cover}
+}
+
 /* 2024 茶之旅邀请函与现场图片的页面表达 */
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .hero-logo{width:min(560px,56vw);height:auto;margin:28px 0 18px;object-fit:contain}
