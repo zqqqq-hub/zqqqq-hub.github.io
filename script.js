@@ -12,6 +12,11 @@
     return rootPrefix + path;
   };
 
+  const useMobileImages = window.matchMedia("(max-width: 720px)").matches;
+  const mobileImagePath = (path) => path.replace(/\.(?:png|jpe?g|webp)$/i, ".mobile.webp");
+  const imageAsset = (path) => asset(useMobileImages ? mobileImagePath(path) : path);
+  const imageFallback = (path, fallback) => fallback || (useMobileImages ? path : "");
+
   const navHref = (anchor) => (isDetailPage ? `${rootPrefix}index.html${anchor}` : anchor);
 
   const html = {
@@ -228,10 +233,11 @@
             <a href="${workUrl(work)}" aria-label="查看 ${html.attrs(work.title)} 项目详情">
               <div class="project-index-media">
                 <img
-                  src="${asset(work.cover)}"
+                  src="${imageAsset(work.cover)}"
                   alt="${html.attrs(work.title)} 项目封面"
                   loading="${index === 0 ? "eager" : "lazy"}"
-                  ${fallbackAttr(work.coverFallback)}
+                  decoding="async"
+                  ${fallbackAttr(imageFallback(work.cover, work.coverFallback))}
                 >
               </div>
               <div class="project-index-copy">
@@ -271,7 +277,7 @@
       .map(
         (image, index) => `
           <figure class="personal-practice-image personal-practice-image-${index + 1}">
-            <img src="${asset(image.src)}" alt="${html.attrs(image.alt)}" loading="lazy">
+            <img src="${imageAsset(image.src)}" alt="${html.attrs(image.alt)}" loading="lazy" decoding="async"${fallbackAttr(imageFallback(image.src, image.fallback))}>
           </figure>
         `,
       )
@@ -302,7 +308,7 @@
     return `
       <figure class="story-figure reveal ${wide ? "story-figure-wide" : ""}">
         <button type="button" data-lightbox-src="${asset(image.src)}" data-lightbox-alt="${html.attrs(image.alt)}">
-          <img src="${asset(image.src)}" alt="${html.attrs(image.alt)}" loading="${index < 2 ? "eager" : "lazy"}"${fallbackAttr(image.fallback)}>
+          <img src="${imageAsset(image.src)}" alt="${html.attrs(image.alt)}" loading="${index < 2 ? "eager" : "lazy"}" decoding="async"${fallbackAttr(imageFallback(image.src, image.fallback))}>
         </button>
         <figcaption>${image.caption || ""}</figcaption>
       </figure>
@@ -315,10 +321,12 @@
         (board, index) => `
           <figure class="continuous-board" data-board-id="${html.attrs(board.id)}">
             <img
-              src="${asset(board.src)}"
+              src="${imageAsset(board.src)}"
               alt="${html.attrs(board.alt)}"
               ${board.width && board.height ? `width="${board.width}" height="${board.height}"` : ""}
               loading="${index === 0 ? "eager" : "lazy"}"
+              decoding="async"
+              ${fallbackAttr(imageFallback(board.src, board.fallback))}
             >
           </figure>
         `,
@@ -504,7 +512,7 @@
         (image, index) => `
           <figure class="detail-figure reveal ${index === 0 ? "detail-figure-wide" : ""}">
             <button type="button" data-lightbox-src="${asset(image.src)}" data-lightbox-alt="${html.attrs(image.alt)}">
-              <img src="${asset(image.src)}" alt="${html.attrs(image.alt)}" loading="${index < 2 ? "eager" : "lazy"}"${fallbackAttr(image.fallback)}>
+              <img src="${imageAsset(image.src)}" alt="${html.attrs(image.alt)}" loading="${index < 2 ? "eager" : "lazy"}" decoding="async"${fallbackAttr(imageFallback(image.src, image.fallback))}>
             </button>
             <figcaption>${image.caption || work.title}</figcaption>
           </figure>
@@ -647,7 +655,7 @@
         const modal = document.getElementById("imageLightbox");
         const image = modal.querySelector("img");
         const renderedImage = lightboxTrigger.querySelector("img");
-        image.src = renderedImage?.currentSrc || lightboxTrigger.dataset.lightboxSrc;
+        image.src = lightboxTrigger.dataset.lightboxSrc || renderedImage?.currentSrc;
         image.alt = lightboxTrigger.dataset.lightboxAlt || "";
         openModal("imageLightbox");
       }
