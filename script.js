@@ -570,7 +570,7 @@
             <p class="eyebrow">Wechat</p>
             <h2 id="wechat-title">微信联系</h2>
             <div class="qr-frame">
-              <img src="${asset(data.contact.wechatQr)}" alt="张千微信二维码" data-wechat-qr>
+              <img data-src="${asset(data.contact.wechatQr)}" alt="张千微信二维码" data-wechat-qr hidden>
               <div class="qr-missing" data-wechat-missing aria-hidden="true">
                 <strong>二维码待补充</strong>
                 <span>上线前将真实图片放入 assets/contact/wechat-qr.png</span>
@@ -635,6 +635,9 @@
             qrImage.hidden = true;
             missingState.removeAttribute("aria-hidden");
           };
+          if (!qrImage.getAttribute("src")) {
+            qrImage.src = qrImage.dataset.src;
+          }
           if (qrImage.complete && qrImage.naturalWidth === 0) {
             qrImage.hidden = true;
             missingState.removeAttribute("aria-hidden");
