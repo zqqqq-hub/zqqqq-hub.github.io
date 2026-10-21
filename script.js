@@ -50,6 +50,9 @@
   }
 
   function renderFooter() {
+    if (isDetailPage) {
+      return `<footer class="portfolio-case-footer" aria-label="案例页底部导航"><a class="portfolio-back-link" href="${rootPrefix}index.html#works">← 返回全部作品</a><a class="portfolio-top-link" href="#">回到顶部 ↑</a></footer>`;
+    }
     return `
       <footer class="site-footer">
         <span>${data.profile.name} · Visual Designer</span>
@@ -93,10 +96,9 @@
   function renderDetailNavigation(work) {
     const works = orderedWorks();
     const currentIndex = works.findIndex((item) => item.slug === work.slug);
-    const backLink = `<a class="detail-project-index portfolio-back-link" href="${rootPrefix}index.html#works">← 返回全部作品</a>`;
 
     if (currentIndex < 0) {
-      return `<nav class="detail-project-navigation is-single" aria-label="作品详情导航">${backLink}</nav>`;
+      return "";
     }
 
     const previous = works[currentIndex - 1];
@@ -111,7 +113,6 @@
     return `
       <nav class="detail-project-navigation" aria-label="作品详情导航" data-motion-reveal>
         ${previousLink}
-        ${backLink}
         ${nextLink}
       </nav>
     `;
@@ -473,9 +474,9 @@
           <section class="detail-hero">
             <p class="eyebrow">Work Not Found</p>
             <h1>未找到作品</h1>
-            <a class="button button-dark" href="${rootPrefix}index.html#works">返回作品列表</a>
           </section>
         </main>
+        ${renderFooter()}
       `;
       return;
     }

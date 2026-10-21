@@ -1,1 +1,9 @@
-a.portfolio-back-link{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:12px 20px;border:1px solid currentColor;border-radius:0;font-family:"PingFang SC","Microsoft YaHei",sans-serif;font-size:13px;font-weight:500;line-height:1.5;letter-spacing:.06em;text-align:center;text-decoration:none;transition:opacity 180ms ease}a.portfolio-back-link:hover{opacity:.65;text-decoration:none}a.portfolio-back-link:focus-visible{outline:2px solid currentColor;outline-offset:4px}
+/* Shared across standalone and generated case pages. */
+.portfolio-case-footer{box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;margin:0;padding:24px 6vw;border:0;border-top:1px solid #eceae02e;background:#11110f;color:#eceae0;font-family:"PingFang SC","Microsoft YaHei",sans-serif;font-size:13px;font-weight:500;line-height:1.5;letter-spacing:.06em}
+.portfolio-case-footer a{box-sizing:border-box;color:inherit;font:inherit;letter-spacing:inherit;text-decoration:none;transition:opacity 180ms ease}
+.portfolio-case-footer .portfolio-back-link{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 20px;border:1px solid currentColor;border-radius:0;white-space:nowrap}
+.portfolio-case-footer .portfolio-top-link{display:inline-flex;align-items:center;min-height:48px;white-space:nowrap}
+.portfolio-case-footer a:hover{opacity:.65;text-decoration:none}
+.portfolio-case-footer a:focus-visible{outline:2px solid currentColor;outline-offset:4px}
+.detail-project-navigation{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+@media(max-width:700px){.portfolio-case-footer{padding:18px 6vw}.detail-project-navigation .detail-project-direction{grid-row:auto}}
