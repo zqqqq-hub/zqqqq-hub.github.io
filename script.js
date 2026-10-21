@@ -93,7 +93,7 @@
   function renderDetailNavigation(work) {
     const works = orderedWorks();
     const currentIndex = works.findIndex((item) => item.slug === work.slug);
-    const backLink = `<a class="detail-project-index" href="${rootPrefix}index.html#works">返回项目列表</a>`;
+    const backLink = `<a class="detail-project-index portfolio-back-link" href="${rootPrefix}index.html#works">← 返回全部作品</a>`;
 
     if (currentIndex < 0) {
       return `<nav class="detail-project-navigation is-single" aria-label="作品详情导航">${backLink}</nav>`;
